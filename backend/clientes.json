@@ -1,0 +1,80 @@
+[
+  {
+    "nombre": "ELECTRO",
+    "direccion": "SAN JOSE",
+    "telefono": "80906050",
+    "correo": "jcbeitaub@gmail.com"
+  },
+  {
+    "nombre": "CAJAS AUTOMATICAS CR",
+    "direccion": "HEREDIA",
+    "telefono": "88770000",
+    "correo": "jcbeitaub@gmail.com"
+  },
+  {
+    "nombre": "AUTOREPUESTOS CR",
+    "direccion": "HEREDIA",
+    "telefono": "90556677",
+    "correo": "jcbeitaub@gmail.com"
+  },
+  {
+    "nombre": "MUEBLES CR",
+    "direccion": "ALAJUELA",
+    "telefono": "70779080",
+    "correo": "jcbeitaub@gmail.com"
+  },
+  {
+    "nombre": "AUTOPARTES CR",
+    "direccion": "SAN JOSE",
+    "telefono": "60656667",
+    "correo": "jcbeitaub@gmail.com"
+  },
+  {
+    "nombre": "HOTEL LINDA VISTA",
+    "direccion": "GUANACASTE",
+    "telefono": "60656465",
+    "correo": "jcbeitaub@gmail.com"
+  },
+  {
+    "nombre": "LLANTAS Y MAS",
+    "direccion": "HEREDIA",
+    "telefono": "70747576",
+    "correo": "jcbeitaub@gmail.com"
+  },
+  {
+    "nombre": "REPUESTOS EL CRUCE",
+    "direccion": "HEREDIA",
+    "telefono": "71727374",
+    "correo": "jcbeitaub@gmail.com"
+  },
+  {
+    "nombre": "HOTEL VISTA DEL SOL",
+    "direccion": "GUANACASTE",
+    "telefono": "60656969",
+    "correo": "jcbeitaub@gmail.com"
+  },
+  {
+    "nombre": "VIDRIOS CR",
+    "direccion": "SAN JOSE",
+    "telefono": "70707575",
+    "correo": "jcbeitaub@gmail.com"
+  },
+  {
+    "nombre": "JYM ELECTROMECANICA",
+    "direccion": "HEREDIA",
+    "telefono": "63223496",
+    "correo": "jcbeitaub@gmail.com"
+  },
+  {
+    "nombre": "ASSE FINANCIAL SERVICES",
+    "direccion": "SAN JOSE",
+    "telefono": "25200210",
+    "correo": "kquesada@redbridge.cc"
+  },
+  {
+    "nombre": "REDBRIDGE DE CENTROAMERICA",
+    "direccion": "SAN JOSE",
+    "telefono": "25200210",
+    "correo": "kquesada@redbridge.cc"
+  }
+]
