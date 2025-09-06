@@ -296,8 +296,13 @@
 
             let clientesCache = [];
 
+            // Determinar base URL según si estamos en local o en Render
+            const baseURL = window.location.hostname.includes("localhost") ?
+                "http://localhost:5000" :
+                window.location.origin;
+
             // Cargar los clientes existentes al iniciar la página
-            fetch("/api/clientes")
+            fetch(`${baseURL}/api/clientes`)
                 .then((res) => res.json())
                 .then((data) => (clientesCache = data))
                 .catch((err) => console.error("Error al cargar clientes:", err));
@@ -320,7 +325,9 @@
 
             // Guardar cliente nuevo al enviar la boleta
             const boletaForm = document.getElementById("boletaForm");
-            boletaForm.addEventListener("submit", async() => {
+            boletaForm.addEventListener("submit", async(e) => {
+                e.preventDefault(); // Evitar doble envío
+
                 const nombre = inputNombre.value.trim();
                 const direccion = inputDireccion.value.trim();
                 const telefono = inputTelefono.value.trim();
@@ -335,18 +342,21 @@
 
                 if (!existe) {
                     try {
-                        await fetch("/api/clientes", {
-                            method: "POST",
-                            headers: {
-                                "Content-Type": "application/json",
-                            },
-                            body: JSON.stringify({
-                                nombre,
-                                direccion,
-                                telefono,
-                                correo,
-                            }),
-                        });
+                        await fetch(
+                            `${baseURL}
+                            /api/clientes`, {
+                                method: "POST",
+                                headers: {
+                                    "Content-Type": "application/json",
+                                },
+                                body: JSON.stringify({
+                                    nombre,
+                                    direccion,
+                                    telefono,
+                                    correo,
+                                }),
+                            }
+                        );
                         // Actualizar cache local para nuevas boletas
                         clientesCache.push({
                             nombre,
@@ -358,6 +368,9 @@
                         console.error("Error al guardar cliente:", err);
                     }
                 }
+
+                // Aquí puedes llamar al script que envía la boleta para no tocar el funcionamiento actual
+                // por ejemplo: boletaForm.submit() si ya tienes otra función que lo hace
             });
         </script>
 </body>
