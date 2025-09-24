@@ -270,26 +270,51 @@ function crearPDF(datos, numeroBoleta, fotosPaths) {
 
         doc.moveDown(2);
 
-        // Bloque Comentarios con fondo y borde
-        const comentariosY = doc.y;
-        doc.save();
-        doc
-            .roundedRect(50, comentariosY, doc.page.width - 100, 60, 5)
-            .fillAndStroke("#e3f2fd", "#cccccc");
-        doc.restore();
+        // Bloque Comentarios con ajuste dinámico al contenido
+        {
+            const comentariosTexto = datos.comentarios || "Sin comentarios.";
+            const startX = 50;
+            const startY = doc.y;
+            const boxWidth = doc.page.width - 100;
+            const textWidth = boxWidth - 20; // padding lateral
 
-        doc
-            .fontSize(13)
-            .fillColor("#1A237E")
-            .text("Comentarios:", 60, comentariosY + 10, sectionOptions);
+            // calcular altura real del texto
+            doc.fontSize(12);
+            const textHeight = doc.heightOfString(comentariosTexto, {
+                width: textWidth,
+                align: "justify",
+            });
 
-        doc
-            .moveDown(1)
-            .fontSize(12)
-            .fillColor("black")
-            .text(datos.comentarios || "Sin comentarios.", sectionOptions);
+            // altura del rectángulo con padding arriba/abajo
+            const boxHeight = textHeight + 40;
 
-        doc.moveDown(2);
+            // dibujar rectángulo de fondo
+            doc.save();
+            doc
+                .roundedRect(startX, startY, boxWidth, boxHeight, 5)
+                .fillAndStroke("#e3f2fd", "#cccccc");
+            doc.restore();
+
+            // título dentro del bloque
+            doc
+                .fontSize(13)
+                .fillColor("#1A237E")
+                .text("Comentarios:", startX + 10, startY + 10, {
+                    width: textWidth,
+                });
+
+            // texto de comentarios dentro del bloque
+            doc
+                .fontSize(12)
+                .fillColor("black")
+                .text(comentariosTexto, startX + 10, startY + 30, {
+                    width: textWidth,
+                    align: "justify",
+                });
+
+            // dejar espacio antes de la siguiente sección
+            doc.moveDown(2);
+        }
 
         // Bloque Encargado del servicio con fondo y borde
         const encargadoY = doc.y;
